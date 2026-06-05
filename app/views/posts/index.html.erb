@@ -11,11 +11,14 @@
           anonymous
         <% end %>
       </h4>
-      <%# conditionally display attached file if post.uploaded_image.attached? %>
-        <%# use url_for(post.uploaded_image) as attached file's url %>
-      <%# otherwise display original image url from database column %>
+      <%# conditionally display attached file if post.uploaded_image.attached? %>                                                   
+      <%# use url_for(post.uploaded_image) as attached file's url %>                                                              
+      <%# otherwise display original image url from database column %> 
+      <% if post.uploaded_image.attached? %>
+        <img src="<%= url_for(post.uploaded_image) %>" class="img-fluid">
+      <% else %>
         <img src="<%= post["image"] %>" class="img-fluid">
-      <%# end %>
+      <% end %>
 
       <div class="row">
         <!-- Likes -->
